@@ -33,12 +33,17 @@ const cacheFiles = {
         'http://localhost:8080/imgs/art12.png',
         'http://localhost:8080/imgs/art13.png',
         'http://localhost:8080/imgs/art14.png',
-        'http://localhost:8080/imgs/spring-disc.png',
-        'http://localhost:8080/imgs/header.png'
+        'http://localhost:8080/imgs/streetart.jpg',
+        'http://localhost:8080/imgs/streetart1.jpg',
+        'http://localhost:8080/imgs/streetart3.jpg',
+        'http://localhost:8080/imgs/streetart4.jpg',
+        'http://localhost:8080/imgs/streetart5.jpg',
+        'http://localhost:8080/imgs/product-montage.png',
     ],
     perm: [
         'https://fonts.googleapis.com/css?family=Roboto:400,500,700',
-        'https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css'
+        'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js',
+        'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css',
     ]
 }
 
