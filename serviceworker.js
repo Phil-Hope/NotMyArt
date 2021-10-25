@@ -1,5 +1,5 @@
-const cacheVersion = '0'
-
+const cacheVersion = '1';
+const host = 'http://127.0.0.1:8000/';
 const currentCaches = {
     css: 'CSS-' + cacheVersion + '.2',
     imgs: 'images-' + cacheVersion + '.1',
@@ -15,40 +15,42 @@ const cachesToDelete = [
 // cache object with 'css', 'imgs' and 'perm' properties
 const cacheFiles = {
     css: [
-        'http://localhost:8080/css/style.css'
+        host + 'css/style.css'
     ],
     imgs: [
-        'http://localhost:8080/imgs/PHiLSART.png',
-        'http://localhost:8080/imgs/art1.png',
-        'http://localhost:8080/imgs/art2.png',
-        'http://localhost:8080/imgs/art3.png',
-        'http://localhost:8080/imgs/art4.png',
-        'http://localhost:8080/imgs/art5.png',
-        'http://localhost:8080/imgs/art6.png',
-        'http://localhost:8080/imgs/art7.png',
-        'http://localhost:8080/imgs/art8.png',
-        'http://localhost:8080/imgs/art9.png',
-        'http://localhost:8080/imgs/art10.png',
-        'http://localhost:8080/imgs/art11.png',
-        'http://localhost:8080/imgs/art12.png',
-        'http://localhost:8080/imgs/art13.png',
-        'http://localhost:8080/imgs/art14.png',
-        'http://localhost:8080/imgs/streetart.jpg',
-        'http://localhost:8080/imgs/streetart1.jpg',
-        'http://localhost:8080/imgs/streetart3.jpg',
-        'http://localhost:8080/imgs/streetart4.jpg',
-        'http://localhost:8080/imgs/streetart5.jpg',
-        'http://localhost:8080/imgs/product-montage.png',
+        host + 'imgs/PHiLSART.png',
+        host + 'imgs/art1.png',
+        host + 'imgs/art2.png',
+        host + 'imgs/art3.png',
+        host + 'imgs/art4.png',
+        host + 'imgs/art5.png',
+        host + 'imgs/art6.png',
+        host + 'imgs/art7.png',
+        host + 'imgs/art8.png',
+        host + 'imgs/art9.png',
+        host + 'imgs/art10.png',
+        host + 'imgs/art11.png',
+        host + 'imgs/art12.png',
+        host + 'imgs/art13.png',
+        host + 'imgs/art14.png',
+        host + 'imgs/streetart.jpg',
+        host + 'imgs/streetart2.jpg',
+        host + 'imgs/streetart3.jpg',
+        host + 'imgs/streetart4.jpg',
+        host + 'imgs/streetart5.jpg',
+        host + 'imgs/product-montage.png',
     ],
     perm: [
         'https://fonts.googleapis.com/css?family=Roboto:400,500,700',
+         host + 'index.html',
+         host + 'shop.html',
         'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js',
         'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css',
     ]
 }
 
 // imports the locally saved localforage js file
-importScripts('js/localforage.min.js')
+importScripts('/js/localforage.min.js')
 
 const dbName = 'store'
 
@@ -77,23 +79,23 @@ const storeInvalidation = localforage.createInstance({
 })
 
 // installs all of the cache items
-self.addEventListener("install", event => {
+self.addEventListener("install", (event) => {
     event.waitUntil(
         Promise.all(
             [
                 caches.open(currentCaches.css)
-                    .then(cache => {
+                    .then((cache) => {
                         return cache.addAll(cacheFiles.css)
                     }),
                 caches.open(currentCaches.imgs)
-                    .then(cache => {
+                    .then((cache) => {
                         return cache.addAll(cacheFiles.imgs)
                     }),
                 caches.open(currentCaches.perm)
-                    .then(cache => {
+                    .then((cache) => {
                         return cache.addAll(cacheFiles.perm)
                     }),
-                ...cachesToDelete.map(cache => {
+                ...cachesToDelete.map((cache) => {
                     return caches.delete(cache)
                 })
             ]
@@ -204,3 +206,4 @@ self.addEventListener("fetch", function (event) {
     }
 
 })
+// https://github.com/lrdswag/NotMyArt
